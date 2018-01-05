@@ -1,0 +1,28 @@
+<% include partials/header %>
+	<h1><%= title %></h1>
+	<h2>Add Customers</h2>
+
+	<% if(errors!= undefined){ %>
+		<ul>
+		<% errors.forEach(function(error){ %>
+			<li><%= error.msg %></li>
+		<% }) %>
+		</ul>
+	<% } %>
+
+	<form method="POST" action="/user/add">
+		<label>First Name</label><br>
+		<input type="text" name="first"><br>
+		<label>Last Name</label><br>
+		<input type="text" name="last"><br>
+		<label>Bol</label><br>
+		<input type="text" name="bol"><br>
+		<input type="submit" name="Submit">
+	</form>
+	<ul>
+	<% user.forEach(function(u){ %>
+		<li><%= u.first %> <%= u.last %> - <a href="#" class="deleteUser" data-id =  "<%= u._id %>">Delete</a></li>
+		<!-- <li><%= u.last %></li> -->
+	<% }); %>
+	</ul>
+<% include partials/footer %>
